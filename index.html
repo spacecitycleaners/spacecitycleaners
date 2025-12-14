@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space City Cleaners - Professional Cleaning Services</title>
+    
+    <!-- Favicon Link: Your requested path is used. This file must be in this location to display correctly. -->
+    <link rel="icon" href="Images/Favicon.png" type="image/png">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS variables updated for a 'Gray/Black' theme */
+        :root {
+            --color-primary: #4B5563; /* Gray 600 */
+            --color-primary-dark: #1F2937; /* Gray 800 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light gray background */
+        }
+        .hero-background {
+            /* Changed gradient colors to Gray/Black gradient */
+            background-image: linear-gradient(180deg, var(--color-primary-dark), #4B5563); 
+        }
+        /* Style for active navigation link indicator */
+        .active-link {
+            position: relative;
+            color: var(--color-primary-dark);
+        }
+        .active-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-primary-dark); /* Dark gray accent line */
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between py-4">
+                <!-- Logo: Removed the text span, only keeping the image linked to the home page -->
+                <div class="flex items-center space-x-2 cursor-pointer" data-page-target="page-home" id="logo-link">
+                    <!-- Logo Image: Updated src to local path 'Images/Logo.png' and changed shape to rectangular rounded-lg -->
+                    <img src="Images/Logo.png" 
+                         alt="Space City Cleaners Logo (Path: Images/Logo.png)" 
+                         class="w-10 h-10 rounded-lg object-cover"
+                         onerror="this.onerror=null; this.src='https://placehold.co/40x40/1F2937/ffffff?text=LOGO';" />
+                </div>
+
+                <!-- Desktop Navigation Links (Tabs) -->
+                <div class="hidden lg:flex items-center space-x-8 text-base font-semibold">
+                    <a href="#" class="nav-link active-link text-gray-700 hover:text-gray-800 transition duration-150" data-page-target="page-home">Book Now</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-gray-800 transition duration-150" data-page-target="page-contact">Contact Us</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-gray-800 transition duration-150" data-page-target="page-about">About Us</a>
+                    <!-- Additional link for a clear CTA (Gray accent) -->
+                    <a href="#" class="nav-link px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition duration-150" data-page-target="page-home">Get a Quote</a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="lg:hidden p-2 text-gray-700 hover:text-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    <!-- Hamburger Icon (three lines) -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu Dropdown - Toggled by JS -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute w-full bg-white shadow-xl border-t border-gray-100 pb-4">
+            <div class="px-4 pt-2 pb-3 space-y-2">
+                <a href="#" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800" data-page-target="page-home">Book Now</a>
+                <a href="#" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800" data-page-target="page-contact">Contact Us</a>
+                <a href="#" class="nav-link-mobile block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-800" data-page-target="page-about">About Us</a>
+                <a href="#" class="nav-link-mobile block w-full text-center mt-3 px-3 py-2 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900" data-page-target="page-home">Get a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA - Holds all pages -->
+    <main class="min-h-screen">
+        
+        <!-- 1. HOME / BOOK NOW PAGE (Initial Content) -->
+        <div id="page-home" class="page-content-section block">
+            <section class="hero-background pt-16 pb-32 relative overflow-hidden">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4">
+                        The Best Cleaning Services in the City
+                    </h1>
+                    <p class="text-lg sm:text-xl text-white opacity-90 max-w-2xl mx-auto mb-10">
+                        Book professional, trusted, and insured cleaners for your home or short-term rental today.
+                    </p>
+
+                    <!-- Primary CTA Button: Updated to trigger cleaning selection -->
+                    <a href="#" id="start-booking-btn" class="inline-block px-10 py-4 bg-gray-700 hover:bg-gray-800 text-white text-lg font-semibold rounded-xl shadow-lg transition duration-300 transform hover:scale-105">
+                        Book Your First Cleaning
+                    </a>
+
+                    <!-- Cleaning Selection Options (Initially Hidden, shown after clicking "Book") -->
+                    <div id="cleaning-options-section" class="hidden mt-8 max-w-4xl mx-auto space-y-6 md:grid md:grid-cols-3 md:gap-6 md:space-y-0 text-left">
+                        
+                        <p class="text-white text-xl font-semibold mb-4 md:col-span-3 text-center">Choose Your Cleaning Service Type:</p>
+                        
+                        <!-- Standard Cleaning Card -->
+                        <div data-cleaning-type="Standard Cleaning" class="cleaning-option-card cursor-pointer p-6 bg-white text-gray-800 rounded-xl shadow-xl hover:ring-4 hover:ring-gray-700/50 transition duration-150 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-2xl font-bold mb-1">Standard Cleaning</h4>
+                                <p class="text-sm font-semibold text-gray-600 mb-3">Est. Starting Price: <span class="text-gray-900 font-extrabold text-xl">$120</span></p>
+                                <ul class="text-sm text-gray-500 list-disc ml-4 space-y-1">
+                                    <li>General dusting and tidying</li>
+                                    <li>Vacuuming and mopping floors (accessible areas)</li>
+                                    <li>Wiping down kitchen counters and stovetop</li>
+                                    <li>Cleaning bathrooms (mirrors, sinks, toilets)</li>
+                                    <li>Emptying trash bins</li>
+                                </ul>
+                            </div>
+                            <!-- This button is just visual, the click handler is on the parent div -->
+                            <button class="mt-4 w-full py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 font-semibold transition">Select & Book</button>
+                        </div>
+
+                        <!-- Deep Cleaning Card -->
+                        <div data-cleaning-type="Deep Cleaning" class="cleaning-option-card cursor-pointer p-6 bg-white text-gray-800 rounded-xl shadow-xl hover:ring-4 hover:ring-gray-700/50 transition duration-150 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-2xl font-bold mb-1">Deep Cleaning</h4>
+                                <p class="text-sm font-semibold text-gray-600 mb-3">Est. Starting Price: <span class="text-gray-900 font-extrabold text-xl">$190</span></p>
+                                <ul class="text-sm text-gray-500 list-disc ml-4 space-y-1">
+                                    <li><span class="font-bold">Includes everything in Standard, plus:</span></li>
+                                    <li>Detail cleaning baseboards and window sills</li>
+                                    <li>Exterior of all cabinets and drawers</li>
+                                    <li>Wiping down interior windows (first floor)</li>
+                                    <li>Cleaning light fixtures and fans</li>
+                                </ul>
+                            </div>
+                            <!-- This button is just visual, the click handler is on the parent div -->
+                            <button class="mt-4 w-full py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 font-semibold transition">Select & Book</button>
+                        </div>
+                        
+                        <!-- Move-In/Out Cleaning Card -->
+                        <div data-cleaning-type="Move-In/Out Cleaning" class="cleaning-option-card cursor-pointer p-6 bg-white text-gray-800 rounded-xl shadow-xl hover:ring-4 hover:ring-gray-700/50 transition duration-150 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-2xl font-bold mb-1">Move-In/Out Cleaning</h4>
+                                <p class="text-sm font-semibold text-gray-600 mb-3">Est. Starting Price: <span class="text-gray-900 font-extrabold text-xl">$250</span></p>
+                                <ul class="text-sm text-gray-500 list-disc ml-4 space-y-1">
+                                    <li><span class="font-bold">Includes everything in Deep, plus:</span></li>
+                                    <li>Inside of cabinets and drawers</li>
+                                    <li>Inside of the refrigerator and oven</li>
+                                    <li>Thorough wall spot cleaning</li>
+                                    <li>Full sanitization of all empty rooms</li>
+                                </ul>
+                            </div>
+                            <!-- This button is just visual, the click handler is on the parent div -->
+                            <button class="mt-4 w-full py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800 font-semibold transition">Select & Book</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Statistics/Trust Bar - Positioned to slightly overlap the hero section -->
+                <div class="absolute inset-x-0 bottom-[-6rem] md:bottom-[-4rem] flex justify-center">
+                    <div class="bg-white p-6 md:p-8 lg:p-10 rounded-2xl shadow-2xl max-w-5xl w-11/12 mx-auto ring-4 ring-white/30">
+                        <div class="flex flex-col md:flex-row items-center justify-around gap-6">
+                            <!-- Rating -->
+                            <div class="text-center">
+                                <div class="flex justify-center space-x-0.5 text-yellow-500 mb-2">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                </div>
+                                <p class="text-sm font-semibold text-gray-500">Rated 5.0 Stars</p>
+                            </div>
+
+                            <!-- Divider on Desktop -->
+                            <div class="hidden md:block w-px h-16 bg-gray-200"></div>
+                            
+                            <!-- Trusted Cleaners (Gray accent) -->
+                            <div class="text-center">
+                                <p class="text-3xl font-extrabold text-gray-900 mb-1">2,500<span class="text-gray-700">+</span></p>
+                                <p class="text-sm font-medium text-gray-500">Trusted Cleaners</p>
+                            </div>
+
+                            <!-- Divider on Desktop -->
+                            <div class="hidden md:block w-px h-16 bg-gray-200"></div>
+
+                            <!-- Cleanings Completed (Gray accent) -->
+                            <div class="text-center">
+                                <p class="text-3xl font-extrabold text-gray-900 mb-1">15K<span class="text-gray-700">+</span></p>
+                                <p class="text-sm font-medium text-gray-500">Cleanings Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pt-32 pb-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-16">
+
+                        <!-- Content Block 1: Cleaning Demonstration Video -->
+                        <div class="lg:col-span-1">
+                            <!-- Video Embed Container with 16:9 Aspect Ratio -->
+                            <div class="relative bg-white rounded-2xl shadow-xl overflow-hidden group">
+                                <div class="relative w-full overflow-hidden" style="padding-top: 56.25%">
+                                    <!-- Replaced iframe with HTML5 video tag using the specified path -->
+                                    <video 
+                                        controls 
+                                        class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                                        poster="https://placehold.co/560x315/4B5563/ffffff?text=Video+Loading..."
+                                    >
+                                        <source src="Videos/Cleaning.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            
+                            <!-- Supporting Text for Video Card -->
+                            <div class="mt-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Cleaning Demonstration Video</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Watch this short clip to see the high standard of cleaning and attention to detail you can expect from our team.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Content Block 2 & 3: How It Works Section (Two Columns on Desktop) -->
+                        <div class="lg:col-span-2 flex flex-col justify-center">
+                            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 p-6 rounded-2xl">
+                                <!-- Illustration Placeholder (Gray theme placeholder) -->
+                                <div class="md:w-1/2 flex justify-center">
+                                    <img src="https://placehold.co/400x300/4B5563/ffffff?text=Booking+Illustration" 
+                                        alt="Illustration of mobile marketplace" 
+                                        class="w-full max-w-xs md:max-w-md rounded-xl shadow-2xl" 
+                                        onerror="this.onerror=null; this.src='https://placehold.co/400x300/6B7280/ffffff?text=Illustration';">
+                                </div>
+                                
+                                <!-- Text Content -->
+                                <div class="md:w-1/2 text-center md:text-left">
+                                    <h3 class="text-3xl font-extrabold text-gray-900 mb-4 leading-snug">
+                                        Easy Booking & Seamless Service
+                                    </h3>
+                                    <p class="text-lg text-gray-600 leading-relaxed">
+                                        Our mobile-friendly system lets you book, manage, and pay for services in minutes. Get instant availability and transparent pricing.
+                                    </p>
+                                    <!-- Link accent changed to gray -->
+                                    <a href="#" class="mt-4 inline-block text-gray-700 font-semibold hover:text-gray-800 transition duration-150">
+                                        Get started now &rarr;
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Slider Dots (Gray accent) -->
+                            <div class="flex justify-center mt-8 space-x-2">
+                                <span class="w-3 h-3 bg-gray-700 rounded-full"></span>
+                                <span class="w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400 cursor-pointer"></span>
+                                <span class="w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400 cursor-pointer"></span>
+                                <span class="w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400 cursor-pointer"></span>
+                                <span class="w-3 h-3 bg-gray-300 rounded-full hover:bg-gray-400 cursor-pointer"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 2. CONTACT US PAGE (Initially Hidden) -->
+        <div id="page-contact" class="page-content-section hidden pt-16 pb-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-gray-900 text-center mb-12">Get In Touch</h2>
+                
+                <!-- Contact Form Container - Full width and centered -->
+                <div class="max-w-3xl mx-auto p-8 bg-white rounded-xl shadow-lg">
+                    <!-- Form Action is set to mailto:yayhamaruf5@gmail.com with plain text encoding -->
+                    <form action="mailto:yayhamaruf5@gmail.com" method="post" enctype="text/plain">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <!-- Note: 'name' attribute is necessary for mailto forms -->
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-gray-700 focus:border-gray-700 transition duration-150">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-gray-700 focus:border-gray-700 transition duration-150">
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-gray-700 focus:border-gray-700 transition duration-150">
+                        </div>
+
+                        <div class="mb-8">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-gray-700 focus:border-gray-700 transition duration-150"></textarea>
+                        </div>
+
+                        <!-- Submit Button (Gray accent) -->
+                        <button type="submit" class="w-full px-6 py-3 bg-gray-800 text-white font-semibold rounded-xl hover:bg-gray-900 transition duration-150 shadow-md">
+                            Submit Request
+                        </button>
+                        
+                        <!-- Removed contact success message as mailto is used -->
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. ABOUT US PAGE (Initially Hidden) -->
+        <div id="page-about" class="page-content-section hidden pt-16 pb-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-gray-900 text-center mb-12">Our Mission & Story</h2>
+
+                <div class="max-w-4xl mx-auto space-y-12">
+                    
+                    <!-- Mission Section (Gray border accent) -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-gray-700">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4 flex items-center space-x-3">
+                            <!-- Rocket Icon (Gray accent) -->
+                            <svg class="w-8 h-8 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                            <span>Our Mission</span>
+                        </h3>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            To deliver stellar cleaning services that create immaculate spaces for our clients. We combine cutting-edge scheduling technology with highly vetted, professional cleaners to ensure reliability, quality, and peace of mind for every booking, every time.
+                        </p>
+                    </div>
+
+                    <!-- History/Story Section -->
+                    <div class="bg-white p-8 rounded-2xl shadow-xl">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4 flex items-center space-x-3">
+                            <!-- Star Icon (Kept Yellow for 'stellar/rating' theme contrast) -->
+                            <svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <span>Our Founding Story</span>
+                        </h3>
+                        <p class="text-gray-700 leading-relaxed space-y-4 text-base">
+                            <p>Space City Cleaners was founded in 2020 by a team of short-term rental hosts who were frustrated by the lack of reliable, high-quality cleaning services that understood the demands of the modern hospitality industry. We realized the market needed a solution that prioritized trust, efficiency, and communication.</p>
+                            <p>Starting with a handful of properties in the Houston metro area, we built a platform designed to connect hosts with professional cleaners, ensuring every turnover was handled flawlessly. Today, we serve thousands of properties, maintaining our commitment to making cleaning the easiest part of property management.</p>
+                        </p>
+                    </div>
+
+                    <!-- Core Values -->
+                    <div class="pt-4">
+                        <h4 class="text-2xl font-bold text-gray-900 text-center mb-6">Core Values</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                            <div class="p-4 bg-gray-100 rounded-lg">
+                                <!-- Gray accent for emojis -->
+                                <span class="text-gray-700 text-4xl mb-2 block">✨</span>
+                                <p class="font-semibold text-gray-900">Excellence</p>
+                            </div>
+                            <div class="p-4 bg-gray-100 rounded-lg">
+                                <span class="text-gray-700 text-4xl mb-2 block">🤝</span>
+                                <p class="font-semibold text-gray-900">Trust</p>
+                            </div>
+                            <div class="p-4 bg-gray-100 rounded-lg">
+                                <span class="text-gray-700 text-4xl mb-2 block">🚀</span>
+                                <p class="font-semibold text-gray-900">Innovation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm">
+            &copy; 2025 Space City Cleaners. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Page Routing and Mobile Menu Toggle -->
+    <script>
+        // Core Routing and Navigation Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('[data-page-target]');
+            const pages = document.querySelectorAll('.page-content-section');
+            const startBookingBtn = document.getElementById('start-booking-btn');
+            const cleaningOptionsSection = document.getElementById('cleaning-options-section');
+            const cleaningOptionCards = document.querySelectorAll('.cleaning-option-card'); // Updated selector
+            
+            // --- Helper Functions for Booking View State ---
+            const showBookingOptionsView = () => {
+                startBookingBtn.classList.add('hidden');
+                cleaningOptionsSection.classList.remove('hidden');
+            };
+
+            const showDefaultHomeView = () => {
+                startBookingBtn.classList.remove('hidden');
+                cleaningOptionsSection.classList.add('hidden');
+            };
+            
+            // --- Mobile Menu Toggle ---
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+            };
+            mobileMenuButton.addEventListener('click', toggleMenu);
+
+
+            // --- Page Routing Logic ---
+            const showPage = (targetId) => {
+                // 1. Hide all pages
+                pages.forEach(page => {
+                    page.classList.add('hidden');
+                });
+                
+                // 2. Show the target page
+                const targetPage = document.getElementById(targetId);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                }
+                
+                // 3. Reset booking state when navigating to home (for logo/Get a Quote clicks)
+                if (targetId === 'page-home') {
+                    showDefaultHomeView(); 
+                }
+                
+                // 4. Update active link styling
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-link');
+                    // Special case: The 'Get a Quote' button should not get the active link style
+                    if (link.textContent.trim() !== 'Get a Quote' && link.getAttribute('data-page-target') === targetId) {
+                        link.classList.add('active-link');
+                    }
+                });
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+
+                // Scroll to top of the window
+                window.scrollTo(0, 0);
+            };
+
+            // --- Navigation Event Listener ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute('data-page-target');
+                    
+                    // Specific logic for the "Book Now" menu link (based on its text content)
+                    // This now handles both desktop and mobile "Book Now" links in the nav menu.
+                    if (target === 'page-home' && (link.textContent.trim() === 'Book Now')) {
+                        showPage(target); // Navigate to home
+                        showBookingOptionsView(); // Force showing the options
+                    } else {
+                        // All other navigation (Logo, Contact Us, About Us, Get a Quote)
+                        showPage(target); 
+                    }
+                });
+            });
+
+            // --- Booking Flow Logic (Main CTA and Card Clicks) ---
+            if (startBookingBtn && cleaningOptionsSection) {
+                
+                // 1. Show cleaning options when main CTA is clicked
+                startBookingBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showBookingOptionsView();
+                });
+                
+                // 2. Handle specific cleaning option selection (triggers mailto)
+                cleaningOptionCards.forEach(card => {
+                    // Attach click listener to the entire card container
+                    card.addEventListener('click', (e) => {
+                        const cleaningType = card.getAttribute('data-cleaning-type');
+                        const email = 'yayhamaruf5@gmail.com';
+                        const subject = `New Cleaning Order: ${cleaningType}`;
+                        // Include a polite request for details in the body
+                        const body = `Hello,\n\nI would like to book a ${cleaningType} service. Please provide a quote and available times based on the starting price listed on your website.\n\nThank you.`;
+
+                        // Trigger mailto link
+                        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    });
+                });
+            }
+
+            // Set initial page to 'home' when the script runs
+            showPage('page-home');
+            // Ensure the default home view is shown initially
+            showDefaultHomeView(); 
+        });
+    </script>
+
+</body>
+</html>
